@@ -1,0 +1,6 @@
+BACKEND = 'backends.billion-bipac-7402nx.Backend'
+
+ROUTER = '192.168.0.1'
+USER = 'admin'
+PASS = 'admin'
+
