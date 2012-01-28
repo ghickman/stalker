@@ -11,7 +11,10 @@ class Backend(object):
 
     def main(self, mac):
         r = get(self.url, auth=self.credentials)
-        host_rows = BeautifulSoup(r.text).body.form('tr')[2:]
+        if not 'is configuring the router now' in r.text:
+            # ignore the title rows
+            host_rows = BeautifulSoup(r.text).body.form('tr')[2:]
 
-        print [host.td.text for host in host_rows if mac in host.text][0]
+            # return the IP address of a given mac address or None
+            print [host.td.text for host in host_rows if mac in host.text][0] or None
 
